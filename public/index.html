@@ -11,34 +11,47 @@
             <div class="page-header">
                 <h1>Gif countdown generator <small>Using node</small></h1>
             </div>
-            
+
             <p class="lead">The very simple app I have created allows you to generate a countdown timer animated gif depending on the URL parameters you provide. <a href="https://github.com/Nooshu/node-countdown-gif">View the code</a>.</p>
-            
+
             <h2>URL Parameters</h2>
             <ul>
-                <li><strong>time<sup>*</sup></strong> - Date &amp; time when your countdown will end [e.g. 2016-06-24T20:35]</li>
-                <li><strong>frames</strong> - number of frames (also number of seconds) the countdown will run before looping [defaults to 30]</li>
-                <li><strong>width</strong> - width in pixels [defaults to 200]</li>
-                <li><strong>height</strong> - height in pixels [defaults to 200]</li>
-                <li><strong>bg</strong> - hex colour code for the background [defaults to 000000]</li>
-                <li><strong>color</strong> - hex colour code for the text [defaults to ffffff]</li>
-                <li><strong>name</strong> - filename used for the generated gif [defaults to 'default']</li>
+                <li><strong>time<sup>*</sup></strong>: Date &amp; time when your countdown will end [e.g. 2016-06-24T20:35]</li>
+
+                <li><strong>width</strong>: width in pixels [defaults to 400]</li>
+                <li><strong>height</strong>: width in pixels [defaults to 200]</li>
+                <li><strong>frames</strong>: number of frames (also number of seconds) the countdown will run before looping [defaults to 30]</li>
+
+                <li><strong>textColor</strong>: hex colour code for the text [defaults to FFFFFF]</li>
+                <li><strong>bgColor</strong>: hex colour code for the background [defaults to 000000]</li>
+
+                <li><strong>digitFontFamily</strong>: Font family for the digit part [defaults to NotoSans]</li>
+                <li><strong>digitFontSize</strong>: Font size or digit part.</li>
+
+                <li><strong>unitLocale</strong>: The unit string for units. [default to "Days_Hours_Mins_Secs"]</li>
+                <li><strong>unitFontFamily</strong>:  Font family for the digit part [defaults to NotoSans]</li>
+                <li><strong>unitFontSize</strong>: Font size or unit part.</li>
+
+                <li><strong>passedMsgFontFamily</strong>: Font family for the digit part [defaults to NotoSans]</li>
+                <li><strong>passedMsgFontSize</strong>: Font size for the passed message.</li>
+                <li><strong>passedMsg</strong>: The message to show when the time is passed.</li>
             </ul>
             <p><small><sup>*</sup> required.</small></p>
-            
+
             <h2>Generate Examples <small>Triggers a download</small></h2>
             <ul>
-                <li>Basic: <a href="/generate?time=2018-09-24T20:35&name=ex1">/generate?time=2018-09-24T20:35</a></li>
-                <li>Custom dimensions: <a href="/generate?time=2018-09-24T20:35&width=300&height=150&name=ex2">/generate?time=2018-09-24T20:35&width=300&height=150</a></li>
-                <li>Custom colours: <a href="/generate?time=2018-09-24T20:35&bg=028900&color=adff00&name=ex3">/generate?time=2018-09-24T20:35&bg=028900&color=adff00</a></li>
-                <li>Custom name &amp; frames: <a href="/generate?time=2018-09-24T20:35&name=awesome-gif&frames=20&name=ex4">/generate?time=2018-09-24T20:35&name=awesome-gif&frames=20</a></li>
+                <li>Basic: <a href="/generate?time=2023-09-24T20:35">/generate?time=2023-09-24T20:35</a></li>
+                <li>Custom dimensions: <a href="/generate?time=2023-09-24T20:35&width=300&height=150">/generate?time=2023-09-24T20:35&width=300&height=150</a></li>
+                <li>Custom colours: <a href="/generate?time=2023-09-24T20:35&bgColor=264D00&textColor=66CC00">/generate?time=2023-09-24T20:35&bgColor=264D00&textColor=66CC00</a></li>
+                <li>Custom name &amp; frames: <a href="/generate?time=2023-09-24T20:35-gif&frames=20">/generate?time=2023-09-24T20:35-gif&frames=20</a></li>
+                <li>Custom passed message: <a href="/generate?time=2000-09-24T20:35-gif&frames=20">/generate?time=2023-09-24T20:35-gif&frames=20</a></li>
             </ul>
-            
+
             <h2>Serve Examples <small>Display in an image tag</small></h2>
             <div class="row">
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
-                        <img src="/serve?time=2018-09-24T20:35&name=serve1" alt="basic example">
+                        <img src="/serve?time=2023-09-24T20:35" alt="basic example">
                         <div class="caption">
                             <h3>Basic example</h3>
                             <p>Simple example setting only the date + time.</p>
@@ -47,16 +60,15 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
-                        <img src="/serve?time=2018-09-24T20:35&bg=028900&color=adff00&name=serve2" alt="custom colours">
+                        <img src="/serve?time=2023-09-24T20:35&bgColor=264D00&textColor=66CC00&unitLocale=天_小時_分鐘_秒" alt="custom colours">
                         <div class="caption">
-                            <h3>Custom colours</h3>
-                            <p>Example setting a custom set of colours.</p>
+                            <h3>Custom timer</h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
-                        <img src="/serve?time=2018-09-24T20:35&bg=028900&color=adff00&width=200&height=100&name=serve3" alt="custom colours">
+                        <img src="/serve?time=2023-09-24T20:35&bgColor=264D00&textColor=66CC00&width=200&height=100" alt="custom colours">
                         <div class="caption">
                             <h3>Custom dimensions</h3>
                             <p>Example setting a custom set of dimensions.</p>
@@ -64,7 +76,34 @@
                     </div>
                 </div>
             </div>
-            
+
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="/serve?time=2000-09-24T20:35" alt="basic example">
+                        <div class="caption">
+                            <h3>Basic Passed Message</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="/serve?time=2000-09-24T20:35&passedMsg=Oops&passedMsgFontSize=72&textColor=C62925" alt="basic example">
+                        <div class="caption">
+                            <h3>Custom Passed Message</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="/serve?time=2000-09-24T20:35&passedMsg=已經結束啦&textColor=000000&bgColor=EEEEEE" alt="basic example">
+                        <div class="caption">
+                            <h3>Support UTF8</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <p>Under the hood the app uses:</p>
             <ul>
                 <li><a href="https://nodejs.org/en/blog/release/v6.0.0/">Node.js</a></li>
